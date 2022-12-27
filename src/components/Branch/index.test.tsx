@@ -1,4 +1,4 @@
-import Branch from "./";
+import Branch from ".";
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 

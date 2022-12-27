@@ -1,4 +1,5 @@
 import Branch from "./components/Branch"
+import ShouldRender from "./components/ShouldRender"
 
 function App() {
 
@@ -14,6 +15,10 @@ function App() {
           <h1>World</h1>
         </Branch.Else>
       </Branch>
+
+      <ShouldRender condition={false}>
+        <h1>Hello World</h1>
+      </ShouldRender>
     </div>
   )
 }

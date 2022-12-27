@@ -1,4 +1,4 @@
-import ShouldRender from "./ShouldRender";
+import ShouldRender from ".";
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
