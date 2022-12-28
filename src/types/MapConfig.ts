@@ -1,5 +1,5 @@
 type MapConfig = {
-    id: string;
+    id?: string;
     element: React.FC<any>;
     items: any[],
     dataKey: string;

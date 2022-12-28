@@ -8,8 +8,13 @@ const Map = ({ config }: { config: MapConfig }) => {
     delete componentConfig.id;
 
     return <>
-        {config.items.map(item => {
-            const props = { ...componentConfig, key: item[config.id], [config.dataKey]: item };
+        {config.items.map((item, index) => {
+            const key = config.id ? item[config.id] : index
+            const props = {
+                ...componentConfig,
+                key,
+                [config.dataKey]: item
+            };
             return <config.element {...props} />;
         })}
     </>;

@@ -50,4 +50,19 @@ describe('Map Component', () => {
         expect(elem2).toBeDefined();
         expect(elem3).toBeDefined();
     });
+
+    it('should render items when list has scalar values', () => {
+        const PresentationComponent = ({ item }: { item: number }) => <li data-testid="list-item">{item}</li>
+        const ContainerComponent = () => {
+            const items = [1, 2, 3, 4];
+            const config = { items, dataKey: 'item', element: PresentationComponent };
+
+            return <Map config={config} />
+        }
+
+        const { container, getAllByTestId } = render(<ContainerComponent />);
+        getAllByTestId('list-item').forEach((li, index) => {
+            expect(li).toHaveTextContent((index + 1).toString());
+        });
+    });
 });
