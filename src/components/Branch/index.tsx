@@ -1,3 +1,5 @@
+import { render } from "../../utils";
+
 const Branch = ({ condition, children }:
     { condition: boolean, children: JSX.Element[] }): JSX.Element | null => {
 
@@ -7,15 +9,9 @@ const Branch = ({ condition, children }:
     return condition ? IfChild : ElseChild;
 };
 
-Branch.If = ({ children }: { children: JSX.Element | JSX.Element[] }) =>
-    Array.isArray(children)
-        ? <>{children}</>
-        : children;
+Branch.If = ({ children }: { children: JSX.Element | JSX.Element[] }) => render(children);
 
-Branch.Else = ({ children }: { children: JSX.Element | JSX.Element[] }) =>
-    Array.isArray(children)
-        ? <>{children}</>
-        : children;
+Branch.Else = ({ children }: { children: JSX.Element | JSX.Element[] }) => render(children);
 
 
 export default Branch;
