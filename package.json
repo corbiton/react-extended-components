@@ -1,9 +1,14 @@
 {
   "name": "react-extended-components",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/corbiton/react-extended-components"
+  },
+  "license": "MIT",
   "files": [
     "dist"
   ],
