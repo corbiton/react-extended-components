@@ -7,7 +7,7 @@
 When you want to render elements conditionally 
 
 ```
-    import {ShouldRender} from 'reactive';
+    import { ShouldRender } from 'react-extended-components';
 
     const App = () => {
 
@@ -29,10 +29,10 @@ When you want to render elements conditionally
 
 
 ### Branch
-Analogous to If else statements in programming languages, Branch component helps you render some elements when a condition is true and some other elements when the condition is false
+Analogous to If else statements in programming languages, Branch component helps you render some elements when the condition is true and some other elements when the condition is false
 
 ```
-    import {ShouldRender} from 'reactive';
+    import { Branch } from 'react-extended-components';
 
     const App = ()=>{
 
@@ -51,15 +51,17 @@ Analogous to If else statements in programming languages, Branch component helps
 
 #### Props
 -------------------------------
-| Name      |   Type   | Ex    |
-|---------- | -------- |------ |
-| condition | boolean  | 1===1 | 
+| Name      |   Type   | Example |
+|---------- | -------- |---------|
+| condition | boolean  | 1 === 1 | 
 
 
 ### Switch
 Analogous to switch statement or if-else-if ladder in programming. Switch component supports an optional default case too.
 
 ```
+import { Switch } from 'react-extended-components';
+
 const App = ()=>{
     const val = 2;
         return <div>
@@ -83,7 +85,7 @@ const App = ()=>{
 
 #### Props
 --------------------------------------------------------------------------------
-| Name      |   Type                        | Ex                                |
+| Name      |   Type                        | Usage                             |
 |---------- | ------------------------------| --------------------------------- |
 | value     | boolean/number/string/object  | ```<Switch value={x}> .. ```      |
 | when      | boolean/number/string/object  | ```<Switch.Case when={1} ..  ```  |
@@ -95,6 +97,7 @@ Use Map component when you have container and presentation component setup in JS
 #### Before
 ```
    import { useEffect, useState } from "react";
+   import { Map } from 'react-extended-components';
 
     // presentation component
     const User = ({ user }) => {
@@ -123,17 +126,20 @@ Use Map component when you have container and presentation component setup in JS
     };
 
 
+    // consume Users container component
     const App = ()=>{
         return <Users />
     }
 ```
 
 
-### After
+#### After
 
 ```
     import { useEffect, useState } from "react";
+    import { Filter } from 'react-extended-components';
 
+    // presentation component
     const User = ({ user }) => {
         return <div>
             <h3>{user.login}</h3>
@@ -141,6 +147,7 @@ Use Map component when you have container and presentation component setup in JS
         </div>
     };
 
+    // container component
     const Users = () => {
 
         const [data, setData] = useState([]);
@@ -163,20 +170,21 @@ Use Map component when you have container and presentation component setup in JS
         </div>
     };
 
+    // consume Users container component
     const App = () => {
         return <Users />
     }
 ```
 
-#### config
+#### Props
 | Name   | Field                    | Description                                                                                                                                              |
 |--------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| config | id (string)              | Any unique field from your data, this will be used as key for your container component. It's an optional field if not supplied index will be used as key |
-|        | items (list)             | This is your dataset, it should be a list                                                                                                                |
-|        | element (React component | Your container component reference                                                                                                                       |
-|        | dataKey (string)         | Name of the property your container component expects                                                                                                    |
+| config | id (string, optional)              | Any unique field from your data, this will be used as key for your container component. If not supplied index will be used as key |
+|        | items (list, required)             | This is your dataset, it should be a list                                                                                                                |
+|        | element (React component | Your container component reference, required)                                                                                                                      |
+|        | dataKey (string,required)         | Name of the property your container component expects                                                                                                    |
 
-Note: Apart from the above mentioned fields you can also send any custom fields as part of config object, Map component will honor these extra fields, for instance if you want to send a callback function to your container component you could do this
+Note: Apart from the above mentioned fields you can also send any custom fields as part of config object, Map component will honor these extra fields. For instance if you want to send a callback function to your container component you could do this
 
 ```
     const onDelete = ()=>{console.log('deleted');}
@@ -186,7 +194,7 @@ Note: Apart from the above mentioned fields you can also send any custom fields 
 
 
 ### Filter
-Filter component is very much similar to Map function expects it renders items which satisfies a given predicate
+Filter component is very much similar to Map function except it renders only those items which satisfy a given predicate
 
 ```
 const Users = () => {
@@ -204,6 +212,7 @@ const Users = () => {
             id: 'login',
             dataKey: 'user',
             element: User,
+            // render only items with an even index
             predicate: (item,index,list)=>index%2===0
         };
 
@@ -213,21 +222,29 @@ const Users = () => {
     };
 ```
 
+#### Props
 | Name   | Field                    | Description                                                                                                                                              |
 |--------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| config | id (string)              | Any unique field from your data, this will be used as key for your container component. It's an optional field if not supplied index will be used as key |
-|        | items (list)             | This is your dataset, it should be a list                                                                                                                |
-|        | element (React component | Your container component reference                                                                                                                       |
-|        | dataKey (string)         | Name of the property your container component expects                                                                                                    |
-|        | predicate ((item,index,list)=>boolean)     | Function to filter data, this function should return a boolean value                                                                                     |
+| config | id (string, optional)              | Any unique field from your data, this will be used as key for your container component. If not supplied index will be used as key |
+|        | items (list, required)             | This is your dataset, it should be a list                                                                                                                |
+|        | element (React component | Your container component reference, required)                                                                                                                       |
+|        | dataKey (string, required)         | Name of the property your container component expects                                                                                                    |
+|        | predicate ((item,index,list)=>boolean), required)     | Function to filter data, this function should return a boolean value                                                                                     |
 
 
-Note: Just like Map component, Filter component also honors any extra fields you send as part of config and will pass them to your container component. For instance if you want to send a callback to the container component you could do something like this
+Note: Just like Map component, Filter also honors any extra fields you send as part of config and will pass them to the container component. For instance if you want to send a callback to the container component you could do something like this
 
 ```
     const onDelete = () => {console.log('deleted');}
     const predicate= (ite,index) => index%2 === 0;
 
-    <Filter config={{predicate,id:'login',dataKey:'user',items:data,element:User,onUserDelete:onDelete}} />
+    <Filter config={{
+            predicate,
+            id:'login',
+            dataKey:'user',
+            items:data,
+            element:User,
+            onUserDelete:onDelete
+        }} />
 
 ```
