@@ -83,8 +83,8 @@ const App = ()=>{
 ```
 
 Props
-------------------------------------------------------------------------
-| Name      |   Type                        | Ex                         |
-|---------- | ------------------------------| -------------------------  |
-| value     | boolean/number/string/object  | <Switch value={val}> ..    |
-| when      | boolean/number/string/object  | <Switch.Case when={1} ..   |
+--------------------------------------------------------------------------------
+| Name      |   Type                        | Ex                                |
+|---------- | ------------------------------| --------------------------------- |
+| value     | boolean/number/string/object  | ```<Switch value={x}> .. ```      |
+| when      | boolean/number/string/object  | ```<Switch.Case when={1} ..  ```  |
