@@ -1,10 +1,10 @@
 # React-extended-components 
-#### A small collection of React reusable components to keep your JSX clean from conditional checks and JS code snippets
+##### A compact set of React components that streamline your JSX by eliminating conditional statements and JS code fragments.
 
 ## Components
 
 ### ShouldRender
-When you want to render elements conditionally 
+Conditionally render elements with ease.
 
 ```
     import { ShouldRender } from 'react-extended-components';
@@ -29,7 +29,7 @@ When you want to render elements conditionally
 
 
 ### Branch
-Analogous to If else statements in programming languages, Branch component helps you render some elements when the condition is true and some other elements when the condition is false
+The Branch component, similar to 'if-else' statements in programming, allows you to display elements based on the result of a condition, either rendering specific elements if the condition is true or different elements if it's false.
 
 ```
     import { Branch } from 'react-extended-components';
@@ -57,7 +57,7 @@ Analogous to If else statements in programming languages, Branch component helps
 
 
 ### Switch
-Analogous to switch statement or if-else-if ladder in programming. Switch component supports an optional default case too.
+The Switch component, akin to the 'switch' statement or the 'if-else-if' ladder in programming, enables you to make conditional selections. It also provides an optional default case for added flexibility.
 
 ```
 import { Switch } from 'react-extended-components';
@@ -92,7 +92,7 @@ const App = ()=>{
 
 
 ### Map
-Use Map component when you have container and presentation component setup in JSX and want to avoid javascript code snippets and keep your code clean.
+The Map component simplifies the process of rendering a collection of items in React. Use it when you have defined a container and presentation components, and want to keep your code organized and free of JavaScript code snippets.
 
 #### Before
 ```
@@ -194,7 +194,7 @@ Note: Apart from the above mentioned fields you can also send any custom fields 
 
 
 ### Filter
-Filter component is very much similar to Map function except it renders only those items which satisfy a given predicate
+The Filter component functions similarly to the Map function, but only renders items that meet a specified criterion or predicate
 
 ```
 const Users = () => {
